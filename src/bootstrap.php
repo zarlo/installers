@@ -36,7 +36,7 @@ function renderString($string, $data = [])
     $urlEnvironment = new Environment($loader,[
         'cache' => __DIR__ . '/../cache/string',
     ]);
-    $url = $urlEnvironment->render(sha1($string), $data);
+    return $urlEnvironment->render(sha1($string), $data);
 
 }
 
@@ -81,6 +81,7 @@ switch ($routeInfo[0]) {
         echo $twig->render("405.html");
         break;
     case Dispatcher::FOUND:
+        
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
         
@@ -101,7 +102,8 @@ switch ($routeInfo[0]) {
             $data = array_merge($data, ['data'=>$handler['data']]);
         }
         if(isset($handler['30x']))
-        {            
+        {           
+            echo renderString($handler['30x'], $data);
             header('Location: '. renderString($handler['30x'], $data));
         }
         elseif(isset($handler['script']))
