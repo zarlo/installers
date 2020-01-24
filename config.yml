@@ -5,8 +5,6 @@ routes:
     30x: "https://raw.githubusercontent.com/ajenti/ajenti/master/scripts/install.sh"
   - path: "/certbot_deb.sh"
     script: "/certbot_deb.sh"
-  - path: "/proxmox"
-    30x: "https://installers.sh/proxmox-6"
   
   #proxmox
   - path: "/proxmox-5"

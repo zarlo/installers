@@ -112,6 +112,7 @@ switch ($routeInfo[0]) {
         }
         elseif(isset($handler['template']))
         {
+            array_merge($data, [ "data" => $handler['data'] ]);
             echo $twig->render($handler['template'], $data);
         }
         break;
