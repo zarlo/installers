@@ -110,7 +110,7 @@ switch ($routeInfo[0]) {
         {
 
             $filename = __DIR__ . '/../scripts' . renderString($handler['script'], $data);
-
+            header("Content-Type: text/plain");
             echo renderString(file_get_contents($filename), $data);
 
         }
