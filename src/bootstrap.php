@@ -90,13 +90,15 @@ switch ($routeInfo[0]) {
         if (isset($vars))
         {
             for ($i = 1; $i < sizeof($vars); $i++) 
-                array_merge($data, [ "parm_". $i => $vars[$i]]);
+                $data = array_merge($data, [ "parm_". $i => $vars[$i]]);
         }
-        array_merge($data, [ "get" => $_GET]);
-        array_merge($data, [ "domain" => $_SERVER['HTTP_HOST']]);
+        $data = array_merge($data, [ "get" => $_GET]);
+
+        $data = array_merge($data, [ "domain" => $_SERVER['HTTP_HOST']]);
+
         if(isset($handler['data']))
         {
-            array_merge($data, ['data'=>$handler['data']]);
+            $data = array_merge($data, ['data'=>$handler['data']]);
         }
         if(isset($handler['30x']))
         {            
@@ -112,7 +114,7 @@ switch ($routeInfo[0]) {
         }
         elseif(isset($handler['template']))
         {
-            array_merge($data, [ "data" => $handler['data'] ]);
+            $data = array_merge($data, [ "data" => $handler['data'] ]);
             echo $twig->render($handler['template'], $data);
         }
         break;
