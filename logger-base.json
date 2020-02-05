@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "formatters": {
+    "dashed": {
+      "format": "%datetime%-%channel%.%level_name% - %message%\n"
+    }
+  },
+  "handlers": {
+    "file_handler": {
+      "class": "Monolog\\Handler\\StreamHandler",
+      "level": "INFO",
+      "formatter": "dashed",
+      "stream": "./log"
+    }
+  },
+  "loggers": {
+    "main": {
+      "handlers": [
+        "file_handler"
+      ]
+    },
+    "router": {
+      "handlers": [
+        "file_handler"
+      ]
+    },
+    "render": {
+      "handlers": [
+        "file_handler"
+      ]
+    }
+  }
+}

@@ -1,3 +1,4 @@
 /vendor/
 /route.cache
 /cache/
+/logger.json
