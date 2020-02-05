@@ -73,7 +73,7 @@ function makeRoutes() {
             }
             else
             {
-                $folder = [ "template" => "folder.html", "data" => json_decode(json_encode($route['items']), True)];
+                $folder = [ "data" => json_decode(json_encode($route['items']), True)];
                 $r->addRoute('GET', $route->path, $folder);
                 //print_r($folder);
             }
@@ -180,7 +180,7 @@ switch ($routeInfo[0]) {
         $data = array_merge($data, [ "get" => $_GET]);
 
         $data = array_merge($data, [ "domain" => $_SERVER['HTTP_HOST']]);
-
+        $data = array_merge($data, [ "base" => $_SERVER['REQUEST_URI']]);
         if(isset($handler['data']))
         {
             $data = array_merge($data, ['data'=>$handler['data']]);
@@ -200,7 +200,10 @@ switch ($routeInfo[0]) {
         }
         elseif(isset($handler['template']))
         {
-            $data = array_merge($data, [ "data" => $handler['data'] ]);
+            if (isset($handler['data']))
+                $data = array_merge($data, [ "data" => $handler['data'] ]);
+            else
+                $data = array_merge($data, [ "data" => $handler ]);
             // print_r($data);
             // echo "</br>----</br>";
             // print_r($handler);
@@ -209,7 +212,7 @@ switch ($routeInfo[0]) {
         }
         else
         {
-            $data = array_merge($data, [ "base" => $_SERVER['REQUEST_URI']]);
+            
             $data = array_merge($data, [ "data" => $handler ]);
             echo $twig->render("folder.html", $data);
         }
