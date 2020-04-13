@@ -8,4 +8,4 @@ RUN pip install -r /app/requirements.txt
 EXPOSE 5000
 
 WORKDIR /
-CMD [ "python3", "app.py" ]
+CMD [ "python3", "run.py" ]
