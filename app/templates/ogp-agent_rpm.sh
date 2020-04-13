@@ -1,4 +1,4 @@
-#!/bin/bash
+
 . /etc/os-release
 
 yum -y update

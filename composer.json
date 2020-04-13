@@ -1,7 +1,0 @@
-{
-    "require": {
-        "nikic/fast-route": "^1.3",
-        "twig/twig": "^3.0",
-        "theorchard/monolog-cascade": "^0.5.1"
-    }
-}

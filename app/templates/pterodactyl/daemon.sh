@@ -1,4 +1,4 @@
-#!/bin/bash
+    
 mkdir -p /srv/daemon /srv/daemon-data
 cd /srv/daemon
 
